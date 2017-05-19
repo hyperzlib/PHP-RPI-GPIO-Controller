@@ -17,3 +17,4 @@ chmod -R +x ./
 ```bash
 ./daemon.sh
 ```
+2.用户数据保存在 config/users.php，可配置多个用户，请按照PHP数组方式填写
