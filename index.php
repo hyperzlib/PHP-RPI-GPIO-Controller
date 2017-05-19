@@ -22,6 +22,7 @@
 
 $title = '主页';
 include('header.php');
+require_once ('lib/function.php');
 if(!isset($_SESSION['username'])){
 ?>
 <div class="col-md-12">
@@ -47,7 +48,7 @@ if(!isset($_SESSION['username'])){
 			<?php
 			for($i=0;$i<30;$i++){
 				system("gpio mode ".$i." out");
-				$val_array[$i] = trim(shell_exec("gpio read ".$i));
+				$val_array[$i] = gpio_read($i);
 			}
 			$i =0;
 			for ($i = 0; $i < 30; $i++) {

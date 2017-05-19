@@ -69,11 +69,11 @@ function gpio(){
 	require_once('lib/function.php');
 	if(isset($_POST['id']) && isset($_SESSION['username'])){
 		$id = $_POST['id'];
-		$status = shell_exec('gpio read '.$id);
-		if(trim($status) == '0'){
-			echo root_exec('gpio write '.$id.' 1');
+		$status = gpio_read($id);
+		if($status == '0'){
+			gpio_write($id, '1');
 		} elseif($status == '1'){
-			echo root_exec('gpio write '.$id.' 0');
+			gpio_write($id, '0');
 		}
 		echo json_encode(['status' => 0, 'mode' => intval($status)]);
 	} else {

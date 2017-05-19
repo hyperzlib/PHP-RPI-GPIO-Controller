@@ -19,3 +19,13 @@ function root_exec($exec){
 	socket_close($socket);
 	return $out;
 }
+
+function gpio_read($id){
+	$status = shell_exec('gpio read '.strval($id));
+	return trim($status);
+}
+
+function gpio_write($id, $value){
+	$status = root_exec('gpio write '.strval($id).' '.strval($value));
+	return trim($status);
+}
